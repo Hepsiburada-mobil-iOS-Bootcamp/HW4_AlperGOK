@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     var characterManager = CharacterManager()
     
     override func viewDidLoad() {
+        navigationController?.navigationBar.backgroundColor = .gray
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
