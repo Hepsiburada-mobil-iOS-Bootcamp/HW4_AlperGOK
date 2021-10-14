@@ -9,8 +9,8 @@ class CharacterManager {
     
     var character = [CharacterData]()
     func parseJSON(complete: @escaping () -> ()) {
-        let url = URL(string: "https://api.opendota.com/api/heroStats")
-        URLSession.shared.dataTask(with: url!) { data, response, error in
+        guard let url = URL(string: "https://api.opendota.com/api/heroStats")else{return}
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if error == nil {
                 do {
                     self.character = try JSONDecoder().decode([CharacterData].self, from: data!)

@@ -13,6 +13,7 @@ struct CharacterData: Codable {
     let attack_type: String
     let roles: [String]
     let img: String
+    let icon: String
 }
 
 extension UIImageView {

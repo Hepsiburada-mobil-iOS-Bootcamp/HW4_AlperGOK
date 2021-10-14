@@ -12,9 +12,10 @@ class MainViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     var characterManager = CharacterManager()
+    var customCharacterCell = CustomCharacterCell()
     
     override func viewDidLoad() {
-        navigationController?.navigationBar.backgroundColor = .gray
+        
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -52,8 +53,10 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "reusableCell")
-        cell.textLabel?.text = characterManager.character[indexPath.row].localized_name.capitalized
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reusableCell") as! CustomCharacterCell
+        cell.characterNameLabel.text = characterManager.character[indexPath.row].localized_name.capitalized
+        cell.characterIconView.downloaded(from: "https://api.opendota.com"+characterManager.character[indexPath.row].icon)
+        
         return cell
         
     }

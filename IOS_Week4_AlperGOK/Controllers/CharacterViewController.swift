@@ -8,7 +8,7 @@
 import UIKit
 
 class CharacterViewController: UIViewController {
-
+    
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -28,5 +28,8 @@ class CharacterViewController: UIViewController {
         attackLabel.text = character?.attack_type
         roleLabel.text = "\(formatter.string(from: character!.roles) ?? "nil")"
         imageView.downloaded(from: url!)
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.clipsToBounds = true
+           
     }
 }
